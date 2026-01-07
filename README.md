@@ -38,5 +38,6 @@ Developed by **Benhamamouch Othman (Oxy-One)**
 ## 🪪 License
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.  
 
-© 2025 **SSCI Solution of Cold** — All rights reserved.
+SSCI SOLUTION OF COLD © 2026 – v2026.1
+
 
