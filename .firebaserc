@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "cold-service-othman"
+  },
+  "targets": {
+    "ssci-cold-service": {
+      "hosting": {
+        "main": [
+          "sscicoldchain-demo"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

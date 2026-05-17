@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OxyONE - Écosystème Industriel 4.0</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; width: 100%; overflow: hidden; }
+        .gradient-frost { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); }
+        .card-glow { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+        .status-pulse { animation: pulse-glow 2s infinite; }
+        @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .app-container { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body class="bg-slate-50 flex flex-col h-full">
+    <div class="flex h-full w-full">
+        <aside class="w-72 gradient-frost text-white p-6 flex flex-col border-r border-slate-700">
+            <div class="mb-8">
+                <div class="flex items-center space-x-2 mb-2">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold">◆</div>
+                    <h1 class="text-xl font-bold text-cyan-400">OxyONE</h1>
+                </div>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">Souveraineté Industrielle</p>
+            </div>
+            <nav class="space-y-2 flex-1">
+                <button onclick="switchApp('tracking')" class="w-full flex items-center space-x-3 p-3 rounded-lg bg-blue-600/20 text-blue-400">
+                    <i data-lucide="map"></i> <span>Smart Tracking</span>
+                </button>
+                <button onclick="switchApp('digital')" class="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-700 transition">
+                    <i data-lucide="thermometer"></i> <span>Digital Sense</span>
+                </button>
+                <button onclick="switchApp('demo')" class="w-full flex items-center space-x-3 p-3 rounded-lg hover:bg-slate-700 transition">
+                    <i data-lucide="play-circle"></i> <span>SSCI Demo</span>
+                </button>
+            </nav>
+            <div class="pt-4 border-t border-slate-700 text-[11px] text-slate-400">
+                <p class="font-bold">O. BENHAMAMOUCH</p>
+                <p>Expert-Comptable / CEO</p>
+            </div>
+        </aside>
+        <main class="flex-1 flex flex-col overflow-auto">
+            <header class="bg-white border-b p-6 flex justify-between items-center">
+                <div>
+                    <h2 id="app-title" class="text-2xl font-bold text-slate-800">Moteur de Tracking 4.0</h2>
+                    <p class="text-sm text-slate-500">Intégration temps réel — Projet OxyONE</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <span class="text-[10px] text-slate-500 uppercase">Statut Flux</span>
+                        <div class="flex items-center text-green-500 font-bold">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 status-pulse"></span> NOMINAL
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="p-8 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card-glow p-6 rounded-xl shadow-sm">
+                        <p class="text-xs text-slate-500 uppercase font-bold">Température Actuelle</p>
+                        <p id="live-temp" class="text-3xl font-bold text-blue-600">--°C</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl shadow-sm">
+                        <p class="text-xs text-slate-500 uppercase font-bold">Collaborateurs</p>
+                        <p class="text-3xl font-bold text-slate-800">62</p>
+                    </div>
+                    <div class="card-glow p-6 rounded-xl shadow-sm">
+                        <p class="text-xs text-slate-500 uppercase font-bold">Conformité Froid</p>
+                        <p id="live-status" class="text-3xl font-bold text-green-500">VALIDE</p>
+                    </div>
+                </div>
+                <div class="app-container shadow-2xl bg-white">
+                    <iframe id="main-iframe" src="https://cold-service-othman.web.app/"></iframe>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        lucide.createIcons();
+        function switchApp(app) {
+            const iframe = document.getElementById('main-iframe');
+            const title = document.getElementById('app-title');
+            if(app === 'tracking') { iframe.src = "https://cold-service-othman.web.app/"; title.innerText = "Smart Tracking Project"; }
+            else if(app === 'digital') { iframe.src = "https://digitalsense-5a6f2.web.app/"; title.innerText = "Digital Sense Dashboard"; }
+            else if(app === 'demo') { iframe.src = "https://sscicoldchain-demo.web.app"; title.innerText = "SSCI Demo - Portfolio"; }
+        }
+        const firebaseConfig = { apiKey: "AIzaSyCI45DK_gCH4SXHHBo7Qa7XCtuQ19jfYA0", projectId: "digitalsense-5a6f2" };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        db.collection('monitoring').doc('05OjHLxpa7Bk1msXHGEe').onSnapshot((doc) => {
+            if (doc.exists) {
+                const data = doc.data();
+                const temp = data.temperature || 0;
+                document.getElementById('live-temp').innerText = temp + "°C";
+                const statusEl = document.getElementById('live-status');
+                if(temp > -18) { statusEl.innerText = "ALERTE"; statusEl.className = "text-3xl font-bold text-red-500"; }
+                else { statusEl.innerText = "VALIDE"; statusEl.className = "text-3xl font-bold text-green-500"; }
+            }
+        });
+    </script>
+</body>
+</html>
