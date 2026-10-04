@@ -1,86 +1,33 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <base href="/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OxyONE - Ice Precision Premium | SSCI</title>
-    
-    <!-- Remplacement par CSS standard pour éviter l'erreur CDN en production -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root { --ice-blue: #3b82f6; --deep-dark: #02040a; }
-        body, html { margin: 0; padding: 0; overflow: hidden; background-color: var(--deep-dark); height: 100%; font-family: sans-serif; }
-        
-        #particle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+  <base href="/">
 
-        .ice-card {
-            position: relative;
-            background: rgba(13, 18, 36, 0.85);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            backdrop-filter: blur(15px);
-            z-index: 5;
-        }
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="OxyONE Smart Tracking App">
 
-        .corner { position: absolute; width: 14px; height: 14px; border: 2px solid var(--ice-blue); z-index: 10; }
-        .c-tl { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
-        .c-tr { top: -2px; right: -2px; border-left: 0; border-bottom: 0; }
-        .c-bl { bottom: -2px; left: -2px; border-right: 0; border-top: 0; }
-        .c-br { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="OxyONE Tracking">
 
-        #flutter_target {
-            width: 100%;
-            height: 100%;
-            display: block;
-            z-index: 20;
-        }
-    </style>
+  <title>OxyONE Smart Tracking</title>
+  <link rel="manifest" href="manifest.json">
 </head>
-<body class="text-slate-100">
-
-    <canvas id="particle-canvas"></canvas>
-
-    <div class="relative z-10 flex flex-col h-screen">
-        <header class="p-5 border-b border-blue-900/40 bg-[#02040a]/90 flex justify-between items-center">
-            <h1 class="text-3xl font-black tracking-tighter italic uppercase">
-                OxyONE <span class="text-blue-500 font-mono text-xs not-italic">v2.3 Premium</span>
-            </h1>
-            <div class="text-[9px] text-slate-500 font-mono text-right">
-                SSCI SOLUTION OF COLD<br>CONVENTION DE BERNE
-            </div>
-        </header>
-
-        <main class="flex-grow p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] mx-auto w-full overflow-hidden">
-            <div class="lg:col-span-9 ice-card p-1 rounded-sm relative" style="height: 75vh;">
-                <div class="corner c-tl"></div><div class="corner c-tr"></div>
-                <div class="corner c-bl"></div><div class="corner c-br"></div>
-                
-                <!-- Zone de Simulation -->
-                <div id="flutter_target"></div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Script de chargement Flutter avec protection contre les erreurs ReferenceError -->
-    <script src="flutter.js" defer></script>
-    <script>
-      window.addEventListener('load', function(ev) {
-        if (typeof _flutter === 'undefined') {
-          console.error("Erreur : flutter.js n'a pas pu être chargé. Vérifiez le déploiement Firebase.");
-          return;
+<body>
+  <script src="flutter.js" defer></script>
+  <script>
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.loadEntrypoint({
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine({
+            renderer: "html" // Résout le conflit graphique sous Cloud Shell
+          }).then(function(appRunner) {
+            appRunner.runApp();
+          });
         }
-        _flutter.loader.loadEntrypoint({
-          onEntrypointLoaded: function(engineInitializer) {
-            engineInitializer.initializeEngine({
-              hostElement: document.querySelector('#flutter_target')
-            }).then(function(appRunner) {
-              appRunner.runApp();
-            });
-          }
-        });
       });
-    </script>
+    });
+  </script>
 </body>
 </html>

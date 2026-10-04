@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /visitors_locations/{document} {
+      allow read, write: if true;
+    }
+    match /profiles/{document} {
+      allow read: if true;
+    }
+  }
+}

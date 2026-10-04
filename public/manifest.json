@@ -1,0 +1,25 @@
+{
+  "name": "OxyONE Cold Service Premium",
+  "short_name": "OxyONE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#02040a",
+  "theme_color": "#3b82f6",
+  "description": "Smart Tracking & Cold Chain Logistics - SSCI Solution of Cold",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1828/1828304.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1828/1828304.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
