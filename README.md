@@ -20,3 +20,7 @@ Système de suivi intelligent haute précision, développé avec **Flutter** et 
 - Support Web : ✅ Activé
 - Support Firebase : ✅ Configuré
 - Performance : ⚡ Optimisée
+
+
+## Déploiement GCP
+Projet géré sur Google Cloud Shell ().
