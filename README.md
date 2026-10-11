@@ -24,7 +24,9 @@ Système de géolocalisation et de télémétrie intelligente haute précision p
 | :---: | :---: | :---: |
 | <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" width="60" height="60" /> | <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" width="60" height="60" /> | <img src="https://img.shields.io/badge/Startup-Algeria-green?style=for-the-badge" alt="Startup Algeria" /> |
 | **Flutter SDK** | **Firebase Cloud** | **Startup Algérie** |
-
+<a href="https://www.codehype.ai/product/oxyone?utm_source=codehype_badge" target="_blank" rel="noopener noreferrer">
+  <img src="https://www.codehype.ai/badges/oxyone.svg?variant=find-us&v=20" alt="Featured on CodeHype" width="180" height="65" loading="lazy" decoding="async" style="display:inline-block;border:0;width:100%;max-width:180px;height:auto;max-height:65px;" />
+</a>
 ---
 
 ## 🛠️ Installation & Démarrage
