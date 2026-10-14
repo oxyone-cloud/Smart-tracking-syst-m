@@ -1,0 +1,13 @@
+image: ghcr.io/cirrusactions/flutter:3.24.0
+
+stages:
+  - build
+
+build_apk:
+  stage: build
+  script:
+    - flutter pub get
+    - flutter build apk --release
+  artifacts:
+    paths:
+      - build/app/outputs/flutter-apk/app-release.apk
