@@ -4,7 +4,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+import 'package:flutter/foundation.dart' show kIsWeb;
+// // import 'dart:html' as html; // Désactivé pour Android
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:excel/excel.dart' as excel_pkg;
 import 'package:firebase_core/firebase_core.dart';
