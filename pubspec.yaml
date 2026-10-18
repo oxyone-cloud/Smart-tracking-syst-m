@@ -91,3 +91,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+dependencies:
+flutter:
+sdk: flutter
+flutter_map: ^7.0.2
+latlong2: ^0.9.1
+cloud_firestore: ^5.6.2
+excel: ^4.0.6
+firebase_core: ^3.10.1
+firebase_database: ^11.1.8
+cupertino_icons: ^1.0.8
