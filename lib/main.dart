@@ -280,7 +280,7 @@ class _RealtimeTrackingMapState extends State<RealtimeTrackingMap> {
                   subtitle: Text(video.description, style: const TextStyle(fontSize: 12)),
                   trailing: const Icon(Icons.play_circle_fill, color: Colors.redAccent, size: 30),
                   onTap: () {
-//                     html.window.open(video.url, '_blank');
+                    html.window.open(video.url, '_blank');
                   },
                 );
               },
@@ -417,12 +417,12 @@ class _RealtimeTrackingMapState extends State<RealtimeTrackingMap> {
 </html>
 ''';
 
-//     final blob = html.Blob([htmlContent], 'text/html');
-//     final url = html.Url.createObjectUrlFromBlob(blob);
-//     final anchor = html.AnchorElement(href: url)
+    final blob = html.Blob([htmlContent], 'text/html');
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    final anchor = html.AnchorElement(href: url)
       ..setAttribute("download", "Certificat_Technique_OxyONE_$lang.html")
       ..click();
-//     html.Url.revokeObjectUrl(url);
+    html.Url.revokeObjectUrl(url);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -464,15 +464,15 @@ class _RealtimeTrackingMapState extends State<RealtimeTrackingMap> {
 
     final fileBytes = excel.save();
     if (fileBytes != null) {
-//       final blob = html.Blob(
+      final blob = html.Blob(
         [fileBytes],
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       );
-//       final url = html.Url.createObjectUrlFromBlob(blob);
-//       final anchor = html.AnchorElement(href: url)
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      final anchor = html.AnchorElement(href: url)
         ..setAttribute("download", "OxyONE_Flotte_${DateTime.now().millisecondsSinceEpoch}.xlsx")
         ..click();
-//       html.Url.revokeObjectUrl(url);
+      html.Url.revokeObjectUrl(url);
     }
   }
 
